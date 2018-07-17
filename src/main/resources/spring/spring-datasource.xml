@@ -69,7 +69,7 @@
 	
     <!-- 注解Mapper scanner -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.tigerjoys.shark.miai.inter.mapper" />
+        <property name="basePackage" value="com.tigerjoys.news.inter.mapper" />
         <property name="sqlSessionTemplateBeanName" value="sqlSession" />
     </bean>
     

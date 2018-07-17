@@ -9,11 +9,13 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<bean class="com.tigerjoys.nbs.mybatis.core.utils.SpringBeanApplicationContext">
-		<property name="entityBasepackage" value="com.tigerjoys.shark.miai.inter.entity" />
+		<property name="entityBasepackage" value="com.tigerjoys.news.inter.entity" />
 		<property name="applicationName" value="${application.name}" />
 	</bean>
+	 
+		<bean id="springContextUtils" class="com.tigerjoys.news.service.unitls.SpringContextUtils" />
 	
-	<context:component-scan base-package="com.tigerjoys.shark" />
+	<context:component-scan base-package="com.tigerjoys.news" />
 	
     <import resource="spring-redis.xml" />
 	<import resource="spring-datasource.xml" />

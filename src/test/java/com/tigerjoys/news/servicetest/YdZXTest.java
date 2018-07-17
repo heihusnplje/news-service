@@ -4,12 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.tigerjoys.nbs.common.ActionResult;
-import com.tigerjoys.nbs.common.utils.JsonHelper;
+import com.tigerjoys.news.service.processor.YdHttpclientProcessor;
 import com.tigerjoys.news.unitls.BaseTestConfig;
 
 
@@ -30,12 +28,11 @@ public class YdZXTest extends BaseTestConfig {
 //	
 //
 //	
-//	@Test
-//	public void testHot() throws Exception {
-//		ActionResult result = headHomeService.hotSkill();
-//		System.err.println(JsonHelper.toJson(result));
-//	}
-//	
+	@Test
+	public void testHot() throws Exception {
+		YdHttpclientProcessor.excl("best", 0, 10);
+	}
+	
 
 	
 	
