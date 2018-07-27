@@ -64,60 +64,50 @@ public class YdZXPipeline extends FilePersistentBase implements Pipeline {
 	@Override
     public void process(ResultItems resultItems, Task task) {
         String path = this.path + PATH_SEPERATOR + this.subPath;
-       // YdzxInfoContractImpl ydzxInfoContract = SpringContextUtils.getContext().getBean(YdzxInfoContractImpl.class);
-        YdzxTestContractImpl ydzxInfoContract = SpringContextUtils.getContext().getBean(YdzxTestContractImpl.class);
-        try {
-			YdzxTestEntity ydzx = ydzxInfoContract.findById(1L);
-			logger.info(ydzx==null?"YdzxTestEntity为空":"有值");
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        
+        YdzxInfoContractImpl ydzxInfoContract = SpringContextUtils.getContext().getBean(YdzxInfoContractImpl.class);
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(getFile(path + ".txt")),"UTF-8"));
-            //printWriter.println("url:\t" + resultItems.getRequest().getUrl());
             List<YdzxDto> list = (List<YdzxDto>)resultItems.get("data");
             if(list ==null || list.size()==0){
             	return ;
             }
             for(YdzxDto re: list){
-            	 YdzxTestEntity entity = new YdzxTestEntity();
+            	YdzxInfoEntity entity = new YdzxInfoEntity();
             	 entity.setTitle(re.getTitle());
-//            	 entity.setExtra(JsonHelper.toJson(re.getExtra()));
-//            	 entity.setCreate_time(Tools.getDateTime(re.getDate(), "yyyy-MM-dd HH:mm:ss"));
-//            	 entity.setDocid(re.getDocid());
-//            	 entity.setMeta(re.getMeta());
-//            	 entity.setCtype(re.getCtype());
-//            	 entity.setDtype(re.getDtype());
-//            	 entity.setImpid(re.getImpid());
-//            	 entity.setPageid(re.getPageid());
-//            	 entity.setItemid(re.getItemid());
-//            	 entity.setDisplay_flag(re.getDisplay_flag());
-//            	 entity.setFeedback_forbidden(re.getFeedback_forbidden()!=null && re.getFeedback_forbidden()?1:0);
-//            	 entity.setSecurity(re.getSecurity());
-//            	 entity.setTags(JsonHelper.toJson(re.getTags()));
-//            	 entity.setSummary(re.getSummary());
-//            	 entity.setB_political(re.getB_political()!=null && re.getB_political()?1:0);
-//            	 entity.setImage_urls(JsonHelper.toJson(re.getImage_urls()));
-//            	 entity.setSource(re.getSource());
-//            	 entity.setUrl(re.getUrl());
-//            	 entity.setMtype(re.getMtype());
-//            	 entity.setCategory(re.getCategory());
-//            	 entity.setEdit_cover(re.getEdit_cover()!=null && re.getEdit_cover()?1:0);
-//            	 entity.setComment_count(re.getComment_count());
-//            	 entity.setImage(re.getImage());
-//            	 entity.setUpload_images(JsonHelper.toJson(re.getUpload_images()));
-//            	 entity.setDis_recommend(re.getDis_recommend()!=null && re.getDis_recommend() ?1:0);
-//            	 entity.setAlike(re.getLike());
-//            	 entity.setUp(re.getUp());
-//            	 entity.setAuth(re.getAuth()?1:0);
-//            	 entity.setIs_gov(re.getIs_gov()?1:0);
-//            	 entity.setContent_type(re.getContent_type());
-//            	 entity.setCard_position(JsonHelper.toJson(re.getCard_position()));
-//            	 entity.setTitle_sn(re.getTitle_sn());
-//            	 entity.setWemedia_info(JsonHelper.toJson(re.getWemedia_info()));
+            	 entity.setExtra(JsonHelper.toJson(re.getExtra()));
+            	 entity.setCreate_time(Tools.getDateTime(re.getDate(), "yyyy-MM-dd HH:mm:ss"));
+            	 entity.setDocid(re.getDocid());
+            	 entity.setMeta(re.getMeta());
+            	 entity.setCtype(re.getCtype());
+            	 entity.setDtype(re.getDtype());
+            	 entity.setImpid(re.getImpid());
+            	 entity.setPageid(re.getPageid());
+            	 entity.setItemid(re.getItemid());
+            	 entity.setDisplay_flag(re.getDisplay_flag());
+            	 entity.setFeedback_forbidden(re.getFeedback_forbidden()!=null && re.getFeedback_forbidden()?1:0);
+            	 entity.setSecurity(re.getSecurity());
+            	 entity.setTags(JsonHelper.toJson(re.getTags()));
+            	 entity.setSummary(re.getSummary());
+            	 entity.setB_political(re.getB_political()!=null && re.getB_political()?1:0);
+            	 entity.setImage_urls(JsonHelper.toJson(re.getImage_urls()));
+            	 entity.setSource(re.getSource());
+            	 entity.setUrl(re.getUrl());
+            	 entity.setMtype(re.getMtype());
+            	 entity.setCategory(re.getCategory());
+            	 entity.setEdit_cover(re.getEdit_cover()!=null && re.getEdit_cover()?1:0);
+            	 entity.setComment_count(re.getComment_count());
+            	 entity.setImage(re.getImage());
+            	 entity.setUpload_images(JsonHelper.toJson(re.getUpload_images()));
+            	 entity.setDis_recommend(re.getDis_recommend()!=null && re.getDis_recommend() ?1:0);
+            	 entity.setAlike(re.getLike());
+            	 entity.setUp(re.getUp());
+            	 entity.setAuth(re.getAuth()?1:0);
+            	 entity.setIs_gov(re.getIs_gov()?1:0);
+            	 entity.setContent_type(re.getContent_type());
+            	 entity.setCard_position(JsonHelper.toJson(re.getCard_position()));
+            	 entity.setTitle_sn(re.getTitle_sn());
+            	 entity.setWemedia_info(JsonHelper.toJson(re.getWemedia_info()));
             	 try {
             		 ydzxInfoContract.insert(entity);
 				} catch (Exception e) {
