@@ -38,7 +38,6 @@ public class ClassUtils {
                 List<Class> allClass = getClasses(rootPackageList);
                 for (int i = 0; i < allClass.size(); i++) {
                     // Class.isAssignableFrom()是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的子类或接口。
-                    System.out.println(allClass.get(i).toString());
                 	if ((!allClass.get(i).isInterface())// 是否是类
                             && (c.isAssignableFrom(allClass.get(i)))// 是否实现了同一个接口
                             && (!c.equals(allClass.get(i)))) {// 不是本身
