@@ -82,7 +82,7 @@ public class HuaWeiPageProcessor implements PageProcessor {
 	    }
 	    
 	public static void main(String[] args) {
-		for (int i = 1; i < 123; i++) {
+		for (int i = 1; i < 144; i++) {
 			Spider.create(new HuaWeiPageProcessor())
 					.addUrl("http://pro-teammt.ru/projects/hwff/info/v2/provider.php?GetFirmwaresJson&page="+i)
 					// .addPipeline(new FilePipeline("D:/webmagic/"))
